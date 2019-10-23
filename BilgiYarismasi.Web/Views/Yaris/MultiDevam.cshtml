@@ -1,0 +1,71 @@
+﻿@model BilgiYarismasi.Web.Models.MultiDevamViewModel
+@{
+    ViewBag.Title = "MultiDevam";
+}
+
+<div id="timerText" class="pull-right text-success"></div>
+
+@if (Model.YarismaBasladimi)
+{
+    if (Model.OncekiSoru == null)
+    {
+        <div class="well-lg cvp1">
+            Yarışma başladı, sorularınız hazırlanıyor birazdan cevaplamaya başlayabilirsiniz
+        </div>
+    }
+    else
+    {
+        if (Model.oncekiCevapDogrumu)
+        {
+            <div>
+                <div class="label label-success" style="font-size:30px">Doğru</div>
+            </div>
+        }
+        else
+        {
+            <div>
+                <div class="label label-danger" style="font-size:30px">Yanlış</div>
+            </div>
+        }
+
+        <div>
+            <p></p><p></p>
+            <div class="well well-lg cvp1">
+                Tüm yarışmacıların cevap vermesi bekleniyor, lütfen bekleyiniz...
+            </div>
+        </div>
+    }
+}
+else
+{
+    <div class="well well-lg cvp1">
+        Yarışma hazırlanıyor, lütfen bekleyiniz...
+    </div>
+}
+
+
+<script>
+
+    $(document).ready(function () {
+        setTimeout(bekle, 300);
+        function bekle() {
+            $.get("@Url.Action("getMultiDevam")", function (data) {
+                //alert(data);
+                var dd = data.split("~");
+                if (dd[0] == "1") {
+                    window.location = "@Url.Action("MultiYaris")";
+                }
+                if (dd[0] == "2") {
+                    window.location = "@Url.Action("MultiBitir")";
+                }
+                $('.cvp1').html(dd[0]);
+                $('#timerText').html(dd[1]);
+            });
+            setTimeout(bekle, 300);
+        };
+
+
+    });
+
+
+</script>

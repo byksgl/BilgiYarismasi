@@ -1,0 +1,18 @@
+﻿@model BilgiYarismasi.Web.Models.MultiKonuViewModel
+@{
+    ViewBag.Title = "MultiKonu";
+}
+
+<h2>Aşağıdan bir konu seçiniz</h2>
+
+@foreach (var konu in Model.konular)
+{
+    <a class="btn btn-lg btn-primary" href="@Url.Action("MasaSec",new { id=konu.konu.Id})" style="margin:15px;">
+        <img src="@Url.Content(konu.konu.Resim)" />
+        @konu.konu.Ad
+        <br />
+        <div class="label label-warning">Online Kişi: @konu.KisiSayisi</div>
+    </a>
+}
+
+

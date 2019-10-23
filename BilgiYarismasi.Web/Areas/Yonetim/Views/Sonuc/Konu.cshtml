@@ -1,0 +1,13 @@
+﻿@model List<BilgiYarismasi.DAL.Konu>
+@{
+    ViewBag.Title = "Konu";
+}
+
+<h2>Konu Seçiniz</h2>
+
+@foreach (var konu in Model)
+{
+    <div>
+        <a href="/Yonetim/Sonuc/KonuSonuc/@konu.Id">@konu.Ad</a>
+    </div>
+}

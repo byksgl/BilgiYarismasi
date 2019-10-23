@@ -1,0 +1,15 @@
+﻿@model BilgiYarismasi.Web.Models.SingleKonuViewModel
+@{
+    ViewBag.Title = "SingleKonu";
+}
+
+<h2>Aşağıdan bir konu seçiniz</h2>
+
+@foreach (var konu in Model.konular)
+{
+    <a class="btn btn-lg btn-primary" href="@Url.Action("SingleBasla",new { id=konu.Id})" style="margin:15px;">
+        <img src="@Url.Content(konu.Resim)" />
+        @konu.Ad
+    </a>
+}
+

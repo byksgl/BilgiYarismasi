@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d1366978c5bc431985c2fe60c7b95cb5" Name="Diagram1" ZoomLevel="74">
+        <EntityTypeShape EntityType="BilgiYarismasiModel.AspNetRoles" Width="1.5" PointX="0.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.AspNetUserClaims" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.AspNetUserLogins" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.AspNetUsers" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.Cevap" Width="1.5" PointX="2.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.Konu" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.Kullanici" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.Soru" Width="1.5" PointX="0.75" PointY="9.75" IsExpanded="true" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" ManuallyRouted="false" />
+        <AssociationConnector Association="BilgiYarismasiModel.AspNetUserRoles" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.YarismaSoru" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.YarismaSoruCevap" Width="1.5" PointX="7.375" PointY="9.75" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.Masa" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.MasaKullanici" Width="1.5" PointX="7.375" PointY="3.75" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.Yarisma" Width="1.5" PointX="9.375" PointY="0.75" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_Cevap_Soru" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_YarismaSoru_Cevap" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_YarismaSoruCevap_Cevap" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_Masa_Konu" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_Soru_Konu" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_MasaKullanici_Kullanici" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_MasaKullanici_Masa" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_Yarisma_MasaKullanici" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_YarismaSoru_Soru" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_YarismaSoru_Yarisma" />
+        <AssociationConnector Association="BilgiYarismasiModel.FK_YarismaSoruCevap_YarismaSoru" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.VKullaniciPuan" Width="1.5" PointX="9.375" PointY="4.75" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.Ayarlar" Width="1.5" PointX="9.375" PointY="7.75" />
+        <EntityTypeShape EntityType="BilgiYarismasiModel.VKullaniciPuanTipli" Width="1.5" PointX="9.375" PointY="10.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

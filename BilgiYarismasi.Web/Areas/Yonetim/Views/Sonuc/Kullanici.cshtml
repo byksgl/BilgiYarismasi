@@ -1,0 +1,14 @@
+﻿@model List<BilgiYarismasi.DAL.Kullanici>
+@{
+    ViewBag.Title = "Kullanici";
+}
+
+<h2>Kullanıcı Seçiniz</h2>
+
+@foreach (var kullanici in Model)
+{
+    <div>
+        <a href="/Yonetim/Sonuc/KullaniciSonuc/@kullanici.Id">@kullanici.Ad @kullanici.Soyad</a>
+    </div>
+}
+

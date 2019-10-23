@@ -1,0 +1,56 @@
+﻿@model BilgiYarismasi.Web.Models.MultiYarisViewModel
+@{
+    ViewBag.Title = "MultiYaris";
+}
+
+<div id="timerText" class="pull-right text-success"></div>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(p => p.cevapId)
+    @Html.HiddenFor(p => p.SiraNo)
+    <h1>@Model.SiraNo</h1>
+    <h2>@Model.Sorusu</h2>
+
+    foreach (var cevap in Model.cevaplar)
+    {
+        <div class="col-lg-3">
+            <a class="btn btn-default btn-lg btnCevap" href="#" data-id="@cevap.Id">@cevap.Cevabi</a>
+        </div>
+    }
+
+}
+
+<script>
+    var secs = @ViewBag.seconds;
+    var currentSeconds = 0;
+    var currentMinutes = 0;
+    /*
+     * The following line has been commented out due to a suggestion left in the comments. The line below it has not been tested.
+     * setTimeout('Decrement()',1000);
+     */
+    setTimeout(Decrement, 1000);
+
+    function Decrement() {
+        currentMinutes = Math.floor(secs / 60);
+        currentSeconds = secs % 60;
+        if (currentSeconds <= 9) currentSeconds = "0" + currentSeconds;
+        secs--;
+        document.getElementById("timerText").innerHTML = currentMinutes + ":" + currentSeconds; //Set the element id you need the time put into.
+        if (secs !== -1) {
+            setTimeout('Decrement()', 1000);
+        }
+        else {
+            window.location="/Yaris/MultiBitir";
+        }
+    }
+    $(document).ready(function () {
+    })
+    $(document).on('click', '.btnCevap', function (event, ui) {
+        //alert($(this).data("id"));
+        $("#cevapId").val($(this).data("id"));
+        $("form").submit();
+    });
+
+</script>
+

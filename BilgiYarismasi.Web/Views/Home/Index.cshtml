@@ -1,0 +1,88 @@
+﻿@model BilgiYarismasi.Web.Models.HomeIndexViewModel2
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="well">
+    <div class="row">
+    <div class="col col-lg-8">
+        Hoş Geldiniz!!
+        <p>
+            Yeni sınav sistemimize katılmak üzeresiniz. yönetim panelini aktif etmek için giriş yapın
+        </p>
+        <p>
+            admingiriş= ee@ee.com
+        </p>
+        <p>
+            adminpassword= Aa+123456
+        </p>
+        <a class="btn btn-danger btn-lg" href="@Url.Action("Index","Profil")">Yarışmacı Profili</a>
+        <p>
+            <div class="row2">
+                <p>
+                <div class="colasdf col-lg-4asdf">
+                    <a class="btn btn-lg btn-warning" style="width:400px;" href="@Url.Action("SingleKonu","Yaris")">
+                        <span class="fa fa-3x fa-user"></span>
+                        Single Yarışmaya Başla
+                    </a>
+
+                </div>
+                </p>
+                <div class="colasdf col-lg-4asdf">
+                    <a class="btn btn-lg btn-primary" style="width:400px;" href="@Url.Action("MultiKonu","Yaris")">
+                        <span class="fa fa-3x fa-users"></span>
+                        Multiplayer Yarışmaya Başla
+                    </a>
+
+                </div>
+
+            </div>
+        </p>
+    </div>
+    <div class="col col-lg-4">
+        <h4>Multiplayer Top 5</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <td>Kullanıcı Adı</td>
+                    <td>Kullanıcı Soyadı</td>
+                    <td>Puan</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detay in Model.multi)
+                {
+                    <tr>
+                        <td>@detay.Ad</td>
+                        <td>@detay.Soyad</td>
+                        <td>@detay.Puan</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+        <h4>Singleplayer Top 5</h4>
+        <table class="table table-bordered table-striped table-hover">
+            <thead>
+                <tr>
+                    <td>Kullanıcı Adı</td>
+                    <td>Kullanıcı Soyadı</td>
+                    <td>Puan</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var detay in Model.single)
+                {
+                    <tr>
+                        <td>@detay.Ad</td>
+                        <td>@detay.Soyad</td>
+                        <td>@detay.Puan</td>
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+

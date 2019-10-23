@@ -1,0 +1,39 @@
+﻿@model BilgiYarismasi.Web.Areas.Yonetim.Models.KullaniciSonucViewModel
+@{
+    ViewBag.Title = "KonuSonuc";
+}
+
+<h2>Sonuçlar</h2>
+<div class="label label-primary">
+    <i class="fa fa-user-secret"></i>
+    Kullanıcı seçilip girdiği yarışma sonuçları
+</div>
+<p></p>
+
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <td>Yarışma Tipi</td>
+            <td>Tarih</td>
+            <td>Konu</td>
+            <td>Cevaplanan</td>
+            <td>Doğru</td>
+            <td>Yanlış</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var detay in Model.detaylar)
+        {
+            <tr>
+                <td>@(detay.yarisma.MasaKullanici.Masa.Tip==(int)EnmMasaTipi.SinglePlaeyerMasa?"Single":"Multi")</td>
+                <td>@detay.yarisma.BaslangicTarihi</td>
+                <td>@detay.konu.Ad</td>
+                <td>@detay.cevaplanan</td>
+                <td>@detay.dogru</td>
+                <td>@detay.yanlis</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
+

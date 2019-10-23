@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - BİLGİ YARIŞMASI</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("BİLGİ YARIŞMASI", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Ana sayfa", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Hakkında", "About", "Home")</li>
+                    @if (User.IsInRole("admin"))
+                    {
+                        <li>
+                            <a href="/Yonetim/Yonetici/Index">Yönetim</a>
+                        </li>
+                    }
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @if (Utils.AktifMasa != null)
+        {
+            var masa = Utils.AktifMasa;
+            string actionName = (masa.Tip == (int)EnmMasaTipi.SinglePlaeyerMasa) ? "SingleYaris" : "MultiYaris";
+            <div>
+                Devam eden yarışmanız bulunmaktadır. Yarışmaya devam etmek için <a href="@Url.Action(actionName,"Yaris")">tıklayınız</a>
+            </div>
+        }
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Bilgi Yarışması by Burak</p>
+        </footer>
+    </div>
+
+    @RenderSection("scripts", required: false)
+</body>
+</html>

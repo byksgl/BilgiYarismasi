@@ -1,0 +1,62 @@
+﻿@model BilgiYarismasi.Web.Models.ProfilIndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col col-lg-6">
+        <h1>Profil Sayfası</h1>
+        <h2>Kullanıcı Bilgileri</h2>
+        <table class="table table-bordered table-hover table-striped">
+            <tr>
+                <td>Nick</td>
+                <td>@Model.kullanici.Nick</td>
+            </tr>
+            <tr>
+                <td>Ad Soyad</td>
+                <td>@Model.AdSoyad</td>
+            </tr>
+            <tr>
+                <td>Mail Adresi</td>
+                <td>@Model.kullanici.EPosta</td>
+            </tr>
+            <tr>
+                <td>İl</td>
+                <td>@Model.kullanici.Il</td>
+            </tr>
+            <tr>
+                <td>Doğum Tarihi</td>
+                <td>@Model.kullanici.DogumTarihi</td>
+            </tr>
+
+        </table>
+    </div>
+    <div class="col col-lg-6">
+        <div style="margin-top:15px;">
+            <a class="btn btn-success fa fa-2x fa-trophy" href="@Url.Action("index","Yaris")"> Yarışmaya Başla</a>
+        </div>
+        <h2>Yarışma İstatistikleri</h2>
+        <table class="table table-hover table-bordered table-striped">
+            <tr>
+                <td>Toplam Yarışma Sayısı</td>
+                <td>@Model.ToplamYarismaSayisi</td>
+            </tr>
+            <tr>
+                <td>Toplam Doğru Sayısı</td>
+                <td>@Model.ToplamDogruSayisi</td>
+            </tr>
+            <tr>
+                <td>Toplam Yanlış Sayısı</td>
+                <td>@Model.ToplamYanlisSayisi</td>
+            </tr>
+            <tr>
+                <td>Single Toplam Puanı</td>
+                <td>@Model.SingleBasariPuani</td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+
+
+

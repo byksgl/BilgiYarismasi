@@ -1,0 +1,42 @@
+﻿@model BilgiYarismasi.DAL.Cevap
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Cevap</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.SoruId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SoruId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Dogrumu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Dogrumu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cevabi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cevabi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

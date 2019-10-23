@@ -1,0 +1,29 @@
+﻿
+@{
+    ViewBag.Title = "MasaBekle";
+}
+
+<h2>Yarışmacılar Bekleniyor...</h2>
+
+<div id="a"></div>
+
+<script>
+
+    $(document).ready(function () {
+        setTimeout(bekle, 1000);
+        function bekle() {
+            $.get("@Url.Action("getMasaBekle")", function (data) {
+                //alert(data);
+
+                if (data == "1") {
+                    window.location = "@Url.Action("MultiBasla")";
+                }
+
+                $('#a').html(data);
+            });
+            setTimeout(bekle, 1000);
+        };
+
+    });
+
+</script>

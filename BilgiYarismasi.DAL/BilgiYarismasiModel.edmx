@@ -1,0 +1,1151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BilgiYarismasiModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar(max)" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ayarlar">
+          <Key>
+            <PropertyRef Name="Ad" />
+          </Key>
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Aciklama" Type="nvarchar(max)" />
+          <Property Name="Deger" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Cevap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SoruId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Cevabi" Type="nvarchar" MaxLength="4000" Nullable="false" />
+          <Property Name="Dogrumu" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Konu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SoruSayisi" Type="int" Nullable="false" />
+          <Property Name="SureDk" Type="int" Nullable="false" />
+          <Property Name="Resim" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="EPosta" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="KayitTarihi" Type="datetime" Nullable="false" />
+          <Property Name="DuzeltmeTarihi" Type="datetime" Nullable="false" />
+          <Property Name="Nick" Type="nvarchar" MaxLength="50" />
+          <Property Name="AvatarUrl" Type="nvarchar" MaxLength="255" />
+          <Property Name="Il" Type="nvarchar" MaxLength="50" />
+          <Property Name="DogumTarihi" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="Masa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KonuId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SoruSayisi" Type="int" Nullable="false" />
+          <Property Name="SureDk" Type="int" Nullable="false" />
+          <Property Name="KisiSayisi" Type="int" Nullable="false" />
+          <Property Name="Tip" Type="int" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="datetime" />
+          <Property Name="BitisTarihi" Type="datetime" />
+          <Property Name="KayitTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="MasaKullanici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MasaId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KullaniciId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Tip" Type="int" Nullable="false" />
+          <Property Name="SiraNo" Type="int" Nullable="false" />
+          <Property Name="Ping" Type="datetime" />
+          <Property Name="KayitTarihi" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Soru">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KonuId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Sorusu" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SecenekSayisi" Type="int" />
+        </EntityType>
+        <EntityType Name="Yarisma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MasaKullaniciId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SoruSayisi" Type="int" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="datetime" Nullable="false" />
+          <Property Name="BitisTarihi" Type="datetime" />
+          <Property Name="SureDk" Type="int" />
+        </EntityType>
+        <EntityType Name="YarismaSoru">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="YarismaId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SoruId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="SiraNo" Type="int" />
+          <Property Name="CevapId" Type="uniqueidentifier" />
+          <Property Name="Puan" Type="int" />
+          <Property Name="GosterimTarihi" Type="datetime" />
+        </EntityType>
+        <EntityType Name="YarismaSoruCevap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="YarismaSoruId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CevapId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BilgiYarismasi.dbo.VKullaniciPuan' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VKullaniciPuan">
+          <Key>
+            <PropertyRef Name="KullaniciId" />
+            <PropertyRef Name="MasaId" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="KullaniciId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nick" Type="nvarchar" MaxLength="50" />
+          <Property Name="MasaId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="PUAN" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'BilgiYarismasi.dbo.VKullaniciPuanTipli' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="VKullaniciPuanTipli">
+          <Key>
+            <PropertyRef Name="KullaniciId" />
+            <PropertyRef Name="Ad" />
+            <PropertyRef Name="Soyad" />
+            <PropertyRef Name="Tip" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" />
+          <Property Name="KullaniciId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Ad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Soyad" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Tip" Type="int" Nullable="false" />
+          <Property Name="PUAN" Type="int" />
+        </EntityType>
+        <Association Name="FK_Cevap_Soru">
+          <End Role="Soru" Type="Self.Soru" Multiplicity="1" />
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Soru">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cevap">
+              <PropertyRef Name="SoruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserRoles" Type="Self.AspNetUserRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserRoles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Masa_Konu">
+          <End Role="Konu" Type="Self.Konu" Multiplicity="1" />
+          <End Role="Masa" Type="Self.Masa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Masa">
+              <PropertyRef Name="KonuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasaKullanici_Kullanici">
+          <End Role="Kullanici" Type="Self.Kullanici" Multiplicity="1" />
+          <End Role="MasaKullanici" Type="Self.MasaKullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasaKullanici">
+              <PropertyRef Name="KullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasaKullanici_Masa">
+          <End Role="Masa" Type="Self.Masa" Multiplicity="1" />
+          <End Role="MasaKullanici" Type="Self.MasaKullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Masa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasaKullanici">
+              <PropertyRef Name="MasaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soru_Konu">
+          <End Role="Konu" Type="Self.Konu" Multiplicity="1" />
+          <End Role="Soru" Type="Self.Soru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Soru">
+              <PropertyRef Name="KonuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yarisma_MasaKullanici">
+          <End Role="MasaKullanici" Type="Self.MasaKullanici" Multiplicity="1" />
+          <End Role="Yarisma" Type="Self.Yarisma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasaKullanici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Yarisma">
+              <PropertyRef Name="MasaKullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoru_Cevap">
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="0..1" />
+          <End Role="YarismaSoru" Type="Self.YarismaSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevap">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoru">
+              <PropertyRef Name="CevapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoru_Soru">
+          <End Role="Soru" Type="Self.Soru" Multiplicity="1" />
+          <End Role="YarismaSoru" Type="Self.YarismaSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Soru">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoru">
+              <PropertyRef Name="SoruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoru_Yarisma">
+          <End Role="Yarisma" Type="Self.Yarisma" Multiplicity="1" />
+          <End Role="YarismaSoru" Type="Self.YarismaSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yarisma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoru">
+              <PropertyRef Name="YarismaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoruCevap_Cevap">
+          <End Role="Cevap" Type="Self.Cevap" Multiplicity="1" />
+          <End Role="YarismaSoruCevap" Type="Self.YarismaSoruCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevap">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoruCevap">
+              <PropertyRef Name="CevapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoruCevap_YarismaSoru">
+          <End Role="YarismaSoru" Type="Self.YarismaSoru" Multiplicity="1" />
+          <End Role="YarismaSoruCevap" Type="Self.YarismaSoruCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YarismaSoru">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoruCevap">
+              <PropertyRef Name="YarismaSoruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BilgiYarismasiModelStoreContainer">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ayarlar" EntityType="Self.Ayarlar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Cevap" EntityType="Self.Cevap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Konu" EntityType="Self.Konu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Masa" EntityType="Self.Masa" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MasaKullanici" EntityType="Self.MasaKullanici" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Soru" EntityType="Self.Soru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Yarisma" EntityType="Self.Yarisma" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YarismaSoru" EntityType="Self.YarismaSoru" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="YarismaSoruCevap" EntityType="Self.YarismaSoruCevap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VKullaniciPuan" EntityType="Self.VKullaniciPuan" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VKullaniciPuan].[Id] AS [Id], 
+    [VKullaniciPuan].[KullaniciId] AS [KullaniciId], 
+    [VKullaniciPuan].[Nick] AS [Nick], 
+    [VKullaniciPuan].[MasaId] AS [MasaId], 
+    [VKullaniciPuan].[PUAN] AS [PUAN]
+    FROM [dbo].[VKullaniciPuan] AS [VKullaniciPuan]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="VKullaniciPuanTipli" EntityType="Self.VKullaniciPuanTipli" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [VKullaniciPuanTipli].[Id] AS [Id], 
+    [VKullaniciPuanTipli].[KullaniciId] AS [KullaniciId], 
+    [VKullaniciPuanTipli].[Ad] AS [Ad], 
+    [VKullaniciPuanTipli].[Soyad] AS [Soyad], 
+    [VKullaniciPuanTipli].[Tip] AS [Tip], 
+    [VKullaniciPuanTipli].[PUAN] AS [PUAN]
+    FROM [dbo].[VKullaniciPuanTipli] AS [VKullaniciPuanTipli]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_Cevap_Soru" Association="Self.FK_Cevap_Soru">
+            <End Role="Soru" EntitySet="Soru" />
+            <End Role="Cevap" EntitySet="Cevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetRoles_RoleId">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserRoles_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserRoles" EntitySet="AspNetUserRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Masa_Konu" Association="Self.FK_Masa_Konu">
+            <End Role="Konu" EntitySet="Konu" />
+            <End Role="Masa" EntitySet="Masa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasaKullanici_Kullanici" Association="Self.FK_MasaKullanici_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="MasaKullanici" EntitySet="MasaKullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasaKullanici_Masa" Association="Self.FK_MasaKullanici_Masa">
+            <End Role="Masa" EntitySet="Masa" />
+            <End Role="MasaKullanici" EntitySet="MasaKullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soru_Konu" Association="Self.FK_Soru_Konu">
+            <End Role="Konu" EntitySet="Konu" />
+            <End Role="Soru" EntitySet="Soru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yarisma_MasaKullanici" Association="Self.FK_Yarisma_MasaKullanici">
+            <End Role="MasaKullanici" EntitySet="MasaKullanici" />
+            <End Role="Yarisma" EntitySet="Yarisma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoru_Cevap" Association="Self.FK_YarismaSoru_Cevap">
+            <End Role="Cevap" EntitySet="Cevap" />
+            <End Role="YarismaSoru" EntitySet="YarismaSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoru_Soru" Association="Self.FK_YarismaSoru_Soru">
+            <End Role="Soru" EntitySet="Soru" />
+            <End Role="YarismaSoru" EntitySet="YarismaSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoru_Yarisma" Association="Self.FK_YarismaSoru_Yarisma">
+            <End Role="Yarisma" EntitySet="Yarisma" />
+            <End Role="YarismaSoru" EntitySet="YarismaSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoruCevap_Cevap" Association="Self.FK_YarismaSoruCevap_Cevap">
+            <End Role="Cevap" EntitySet="Cevap" />
+            <End Role="YarismaSoruCevap" EntitySet="YarismaSoruCevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoruCevap_YarismaSoru" Association="Self.FK_YarismaSoruCevap_YarismaSoru">
+            <End Role="YarismaSoru" EntitySet="YarismaSoru" />
+            <End Role="YarismaSoruCevap" EntitySet="YarismaSoruCevap" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BilgiYarismasiModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AspNetRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.AspNetUserRoles" FromRole="AspNetRoles" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUserClaims" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProviderKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUsers" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUserLogins" ToRole="AspNetUsers" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AspNetUserClaims" Relationship="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserClaims" />
+          <NavigationProperty Name="AspNetUserLogins" Relationship="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" FromRole="AspNetUsers" ToRole="AspNetUserLogins" />
+          <NavigationProperty Name="AspNetRoles" Relationship="Self.AspNetUserRoles" FromRole="AspNetUsers" ToRole="AspNetRoles" />
+        </EntityType>
+        <EntityType Name="Cevap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="SoruId" Type="Guid" Nullable="false" />
+          <Property Name="Dogrumu" Type="Boolean" Nullable="false" />
+          <Property Name="Cevabi" Type="String" Nullable="false" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Soru" Relationship="BilgiYarismasiModel.FK_Cevap_Soru" FromRole="Cevap" ToRole="Soru" />
+          <NavigationProperty Name="YarismaSoru" Relationship="BilgiYarismasiModel.FK_YarismaSoru_Cevap" FromRole="Cevap" ToRole="YarismaSoru" />
+          <NavigationProperty Name="YarismaSoruCevap" Relationship="BilgiYarismasiModel.FK_YarismaSoruCevap_Cevap" FromRole="Cevap" ToRole="YarismaSoruCevap" />
+        </EntityType>
+        <EntityType Name="Konu">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SoruSayisi" Type="Int32" Nullable="false" />
+          <Property Name="SureDk" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Masa" Relationship="BilgiYarismasiModel.FK_Masa_Konu" FromRole="Konu" ToRole="Masa" />
+          <NavigationProperty Name="Soru" Relationship="BilgiYarismasiModel.FK_Soru_Konu" FromRole="Konu" ToRole="Soru" />
+          <Property Name="Resim" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Kullanici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="EPosta" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Ad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Soyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="KayitTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DuzeltmeTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Nick" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AvatarUrl" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Il" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DogumTarihi" Type="DateTime" Precision="7" />
+          <NavigationProperty Name="MasaKullanici" Relationship="BilgiYarismasiModel.FK_MasaKullanici_Kullanici" FromRole="Kullanici" ToRole="MasaKullanici" />
+        </EntityType>
+        <EntityType Name="Soru">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="KonuId" Type="Guid" Nullable="false" />
+          <Property Name="Sorusu" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecenekSayisi" Type="Int32" />
+          <NavigationProperty Name="Cevap" Relationship="BilgiYarismasiModel.FK_Cevap_Soru" FromRole="Soru" ToRole="Cevap" />
+          <NavigationProperty Name="Konu" Relationship="BilgiYarismasiModel.FK_Soru_Konu" FromRole="Soru" ToRole="Konu" />
+          <NavigationProperty Name="YarismaSoru" Relationship="BilgiYarismasiModel.FK_YarismaSoru_Soru" FromRole="Soru" ToRole="YarismaSoru" />
+        </EntityType>
+        <Association Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserClaims" Type="Self.AspNetUserClaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserClaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AspNetUserLogins" Type="Self.AspNetUserLogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AspNetUserLogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AspNetUserRoles">
+          <End Role="AspNetRoles" Type="Self.AspNetRoles" Multiplicity="*" />
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="BilgiYarismasiEntities2" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" />
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" />
+          <EntitySet Name="Cevap" EntityType="Self.Cevap" />
+          <EntitySet Name="Konu" EntityType="Self.Konu" />
+          <EntitySet Name="Kullanici" EntityType="Self.Kullanici" />
+          <EntitySet Name="Soru" EntityType="Self.Soru" />
+          <AssociationSet Name="FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserClaims_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserClaims" EntitySet="AspNetUserClaims" />
+          </AssociationSet>
+          <AssociationSet Name="FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId" Association="Self.FK_dbo_AspNetUserLogins_dbo_AspNetUsers_UserId">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLogins" EntitySet="AspNetUserLogins" />
+          </AssociationSet>
+          <AssociationSet Name="AspNetUserRoles" Association="Self.AspNetUserRoles">
+            <End Role="AspNetRoles" EntitySet="AspNetRoles" />
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+          </AssociationSet>
+          <EntitySet Name="YarismaSoru" EntityType="BilgiYarismasiModel.YarismaSoru" />
+          <EntitySet Name="YarismaSoruCevap" EntityType="BilgiYarismasiModel.YarismaSoruCevap" />
+          <EntitySet Name="Masa" EntityType="BilgiYarismasiModel.Masa" />
+          <EntitySet Name="MasaKullanici" EntityType="BilgiYarismasiModel.MasaKullanici" />
+          <EntitySet Name="Yarisma" EntityType="BilgiYarismasiModel.Yarisma" />
+          <AssociationSet Name="FK_Cevap_Soru" Association="BilgiYarismasiModel.FK_Cevap_Soru">
+            <End Role="Soru" EntitySet="Soru" />
+            <End Role="Cevap" EntitySet="Cevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoru_Cevap" Association="BilgiYarismasiModel.FK_YarismaSoru_Cevap">
+            <End Role="Cevap" EntitySet="Cevap" />
+            <End Role="YarismaSoru" EntitySet="YarismaSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoruCevap_Cevap" Association="BilgiYarismasiModel.FK_YarismaSoruCevap_Cevap">
+            <End Role="Cevap" EntitySet="Cevap" />
+            <End Role="YarismaSoruCevap" EntitySet="YarismaSoruCevap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Masa_Konu" Association="BilgiYarismasiModel.FK_Masa_Konu">
+            <End Role="Konu" EntitySet="Konu" />
+            <End Role="Masa" EntitySet="Masa" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Soru_Konu" Association="BilgiYarismasiModel.FK_Soru_Konu">
+            <End Role="Konu" EntitySet="Konu" />
+            <End Role="Soru" EntitySet="Soru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasaKullanici_Kullanici" Association="BilgiYarismasiModel.FK_MasaKullanici_Kullanici">
+            <End Role="Kullanici" EntitySet="Kullanici" />
+            <End Role="MasaKullanici" EntitySet="MasaKullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MasaKullanici_Masa" Association="BilgiYarismasiModel.FK_MasaKullanici_Masa">
+            <End Role="Masa" EntitySet="Masa" />
+            <End Role="MasaKullanici" EntitySet="MasaKullanici" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Yarisma_MasaKullanici" Association="BilgiYarismasiModel.FK_Yarisma_MasaKullanici">
+            <End Role="MasaKullanici" EntitySet="MasaKullanici" />
+            <End Role="Yarisma" EntitySet="Yarisma" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoru_Soru" Association="BilgiYarismasiModel.FK_YarismaSoru_Soru">
+            <End Role="Soru" EntitySet="Soru" />
+            <End Role="YarismaSoru" EntitySet="YarismaSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoru_Yarisma" Association="BilgiYarismasiModel.FK_YarismaSoru_Yarisma">
+            <End Role="Yarisma" EntitySet="Yarisma" />
+            <End Role="YarismaSoru" EntitySet="YarismaSoru" />
+          </AssociationSet>
+          <AssociationSet Name="FK_YarismaSoruCevap_YarismaSoru" Association="BilgiYarismasiModel.FK_YarismaSoruCevap_YarismaSoru">
+            <End Role="YarismaSoru" EntitySet="YarismaSoru" />
+            <End Role="YarismaSoruCevap" EntitySet="YarismaSoruCevap" />
+          </AssociationSet>
+          <EntitySet Name="VKullaniciPuan" EntityType="BilgiYarismasiModel.VKullaniciPuan" />
+          <EntitySet Name="Ayarlar" EntityType="BilgiYarismasiModel.Ayarlar" />
+          <EntitySet Name="VKullaniciPuanTipli" EntityType="BilgiYarismasiModel.VKullaniciPuanTipli" />
+        </EntityContainer>
+        <EntityType Name="YarismaSoru">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="YarismaId" Type="Guid" Nullable="false" />
+          <Property Name="SoruId" Type="Guid" Nullable="false" />
+          <Property Name="SiraNo" Type="Int32" />
+          <Property Name="CevapId" Type="Guid" />
+          <NavigationProperty Name="Cevap" Relationship="BilgiYarismasiModel.FK_YarismaSoru_Cevap" FromRole="YarismaSoru" ToRole="Cevap" />
+          <NavigationProperty Name="Soru" Relationship="BilgiYarismasiModel.FK_YarismaSoru_Soru" FromRole="YarismaSoru" ToRole="Soru" />
+          <NavigationProperty Name="Yarisma" Relationship="BilgiYarismasiModel.FK_YarismaSoru_Yarisma" FromRole="YarismaSoru" ToRole="Yarisma" />
+          <NavigationProperty Name="YarismaSoruCevap" Relationship="BilgiYarismasiModel.FK_YarismaSoruCevap_YarismaSoru" FromRole="YarismaSoru" ToRole="YarismaSoruCevap" />
+          <Property Name="Puan" Type="Int32" />
+          <Property Name="GosterimTarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="YarismaSoruCevap">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="YarismaSoruId" Type="Guid" Nullable="false" />
+          <Property Name="CevapId" Type="Guid" Nullable="false" />
+          <NavigationProperty Name="Cevap" Relationship="BilgiYarismasiModel.FK_YarismaSoruCevap_Cevap" FromRole="YarismaSoruCevap" ToRole="Cevap" />
+          <NavigationProperty Name="YarismaSoru" Relationship="BilgiYarismasiModel.FK_YarismaSoruCevap_YarismaSoru" FromRole="YarismaSoruCevap" ToRole="YarismaSoru" />
+        </EntityType>
+        <EntityType Name="Masa">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="KonuId" Type="Guid" Nullable="false" />
+          <Property Name="SoruSayisi" Type="Int32" Nullable="false" />
+          <Property Name="SureDk" Type="Int32" Nullable="false" />
+          <Property Name="KisiSayisi" Type="Int32" Nullable="false" />
+          <Property Name="Tip" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Konu" Relationship="BilgiYarismasiModel.FK_Masa_Konu" FromRole="Masa" ToRole="Konu" />
+          <NavigationProperty Name="MasaKullanici" Relationship="BilgiYarismasiModel.FK_MasaKullanici_Masa" FromRole="Masa" ToRole="MasaKullanici" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Precision="3" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="KayitTarihi" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="MasaKullanici">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MasaId" Type="Guid" Nullable="false" />
+          <Property Name="KullaniciId" Type="Guid" Nullable="false" />
+          <Property Name="Tip" Type="Int32" Nullable="false" />
+          <Property Name="SiraNo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Kullanici" Relationship="BilgiYarismasiModel.FK_MasaKullanici_Kullanici" FromRole="MasaKullanici" ToRole="Kullanici" />
+          <NavigationProperty Name="Masa" Relationship="BilgiYarismasiModel.FK_MasaKullanici_Masa" FromRole="MasaKullanici" ToRole="Masa" />
+          <NavigationProperty Name="Yarisma" Relationship="BilgiYarismasiModel.FK_Yarisma_MasaKullanici" FromRole="MasaKullanici" ToRole="Yarisma" />
+          <Property Name="Ping" Type="DateTime" Precision="3" />
+          <Property Name="KayitTarihi" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Yarisma">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MasaKullaniciId" Type="Guid" Nullable="false" />
+          <Property Name="SoruSayisi" Type="Int32" Nullable="false" />
+          <Property Name="BaslangicTarihi" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BitisTarihi" Type="DateTime" Precision="3" />
+          <Property Name="SureDk" Type="Int32" />
+          <NavigationProperty Name="MasaKullanici" Relationship="BilgiYarismasiModel.FK_Yarisma_MasaKullanici" FromRole="Yarisma" ToRole="MasaKullanici" />
+          <NavigationProperty Name="YarismaSoru" Relationship="BilgiYarismasiModel.FK_YarismaSoru_Yarisma" FromRole="Yarisma" ToRole="YarismaSoru" />
+        </EntityType>
+        <Association Name="FK_Cevap_Soru">
+          <End Type="BilgiYarismasiModel.Soru" Role="Soru" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.Cevap" Role="Cevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Soru">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Cevap">
+              <PropertyRef Name="SoruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoru_Cevap">
+          <End Type="BilgiYarismasiModel.Cevap" Role="Cevap" Multiplicity="0..1" />
+          <End Type="BilgiYarismasiModel.YarismaSoru" Role="YarismaSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevap">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoru">
+              <PropertyRef Name="CevapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoruCevap_Cevap">
+          <End Type="BilgiYarismasiModel.Cevap" Role="Cevap" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.YarismaSoruCevap" Role="YarismaSoruCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cevap">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoruCevap">
+              <PropertyRef Name="CevapId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Masa_Konu">
+          <End Type="BilgiYarismasiModel.Konu" Role="Konu" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.Masa" Role="Masa" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Masa">
+              <PropertyRef Name="KonuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Soru_Konu">
+          <End Type="BilgiYarismasiModel.Konu" Role="Konu" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.Soru" Role="Soru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Konu">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Soru">
+              <PropertyRef Name="KonuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasaKullanici_Kullanici">
+          <End Type="BilgiYarismasiModel.Kullanici" Role="Kullanici" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.MasaKullanici" Role="MasaKullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kullanici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasaKullanici">
+              <PropertyRef Name="KullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MasaKullanici_Masa">
+          <End Type="BilgiYarismasiModel.Masa" Role="Masa" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.MasaKullanici" Role="MasaKullanici" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Masa">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MasaKullanici">
+              <PropertyRef Name="MasaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Yarisma_MasaKullanici">
+          <End Type="BilgiYarismasiModel.MasaKullanici" Role="MasaKullanici" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.Yarisma" Role="Yarisma" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MasaKullanici">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Yarisma">
+              <PropertyRef Name="MasaKullaniciId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoru_Soru">
+          <End Type="BilgiYarismasiModel.Soru" Role="Soru" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.YarismaSoru" Role="YarismaSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Soru">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoru">
+              <PropertyRef Name="SoruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoru_Yarisma">
+          <End Type="BilgiYarismasiModel.Yarisma" Role="Yarisma" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.YarismaSoru" Role="YarismaSoru" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Yarisma">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoru">
+              <PropertyRef Name="YarismaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_YarismaSoruCevap_YarismaSoru">
+          <End Type="BilgiYarismasiModel.YarismaSoru" Role="YarismaSoru" Multiplicity="1" />
+          <End Type="BilgiYarismasiModel.YarismaSoruCevap" Role="YarismaSoruCevap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="YarismaSoru">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="YarismaSoruCevap">
+              <PropertyRef Name="YarismaSoruId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="VKullaniciPuan">
+          <Key>
+            <PropertyRef Name="KullaniciId" />
+            <PropertyRef Name="MasaId" />
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="KullaniciId" Type="Guid" Nullable="false" />
+          <Property Name="Nick" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MasaId" Type="Guid" Nullable="false" />
+          <Property Name="PUAN" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Ayarlar">
+          <Key>
+            <PropertyRef Name="Ad" />
+          </Key>
+          <Property Name="Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Aciklama" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Deger" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="VKullaniciPuanTipli">
+          <Key>
+            <PropertyRef Name="KullaniciId" />
+            <PropertyRef Name="Ad" />
+            <PropertyRef Name="Soyad" />
+            <PropertyRef Name="Tip" />
+          </Key>
+          <Property Name="Id" Type="Guid" />
+          <Property Name="KullaniciId" Type="Guid" Nullable="false" />
+          <Property Name="Ad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Soyad" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Tip" Type="Int32" Nullable="false" />
+          <Property Name="PUAN" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BilgiYarismasiModelStoreContainer" CdmEntityContainer="BilgiYarismasiEntities2">
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.AspNetRoles">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.AspNetUserClaims">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.AspNetUserLogins">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.AspNetUsers">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cevap">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.Cevap">
+              <MappingFragment StoreEntitySet="Cevap">
+                <ScalarProperty Name="Cevabi" ColumnName="Cevabi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="SoruId" ColumnName="SoruId" />
+                <ScalarProperty Name="Dogrumu" ColumnName="Dogrumu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Konu">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.Konu">
+              <MappingFragment StoreEntitySet="Konu">
+                <ScalarProperty Name="Resim" ColumnName="Resim" />
+                <ScalarProperty Name="SureDk" ColumnName="SureDk" />
+                <ScalarProperty Name="SoruSayisi" ColumnName="SoruSayisi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kullanici">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.Kullanici">
+              <MappingFragment StoreEntitySet="Kullanici">
+                <ScalarProperty Name="DogumTarihi" ColumnName="DogumTarihi" />
+                <ScalarProperty Name="Il" ColumnName="Il" />
+                <ScalarProperty Name="AvatarUrl" ColumnName="AvatarUrl" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="EPosta" ColumnName="EPosta" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="DuzeltmeTarihi" ColumnName="DuzeltmeTarihi" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Soru">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.Soru">
+              <MappingFragment StoreEntitySet="Soru">
+                <ScalarProperty Name="SecenekSayisi" ColumnName="SecenekSayisi" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="KonuId" ColumnName="KonuId" />
+                <ScalarProperty Name="Sorusu" ColumnName="Sorusu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AspNetUserRoles" TypeName="BilgiYarismasiModel.AspNetUserRoles" StoreEntitySet="AspNetUserRoles">
+            <EndProperty Name="AspNetRoles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="AspNetUsers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="YarismaSoru">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.YarismaSoru">
+              <MappingFragment StoreEntitySet="YarismaSoru">
+                <ScalarProperty Name="GosterimTarihi" ColumnName="GosterimTarihi" />
+                <ScalarProperty Name="Puan" ColumnName="Puan" />
+                <ScalarProperty Name="CevapId" ColumnName="CevapId" />
+                <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+                <ScalarProperty Name="SoruId" ColumnName="SoruId" />
+                <ScalarProperty Name="YarismaId" ColumnName="YarismaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="YarismaSoruCevap">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.YarismaSoruCevap">
+              <MappingFragment StoreEntitySet="YarismaSoruCevap">
+                <ScalarProperty Name="CevapId" ColumnName="CevapId" />
+                <ScalarProperty Name="YarismaSoruId" ColumnName="YarismaSoruId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Masa">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.Masa">
+              <MappingFragment StoreEntitySet="Masa">
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="KisiSayisi" ColumnName="KisiSayisi" />
+                <ScalarProperty Name="SureDk" ColumnName="SureDk" />
+                <ScalarProperty Name="SoruSayisi" ColumnName="SoruSayisi" />
+                <ScalarProperty Name="KonuId" ColumnName="KonuId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MasaKullanici">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.MasaKullanici">
+              <MappingFragment StoreEntitySet="MasaKullanici">
+                <ScalarProperty Name="KayitTarihi" ColumnName="KayitTarihi" />
+                <ScalarProperty Name="Ping" ColumnName="Ping" />
+                <ScalarProperty Name="SiraNo" ColumnName="SiraNo" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="KullaniciId" ColumnName="KullaniciId" />
+                <ScalarProperty Name="MasaId" ColumnName="MasaId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Yarisma">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.Yarisma">
+              <MappingFragment StoreEntitySet="Yarisma">
+                <ScalarProperty Name="SureDk" ColumnName="SureDk" />
+                <ScalarProperty Name="BitisTarihi" ColumnName="BitisTarihi" />
+                <ScalarProperty Name="BaslangicTarihi" ColumnName="BaslangicTarihi" />
+                <ScalarProperty Name="SoruSayisi" ColumnName="SoruSayisi" />
+                <ScalarProperty Name="MasaKullaniciId" ColumnName="MasaKullaniciId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VKullaniciPuan">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.VKullaniciPuan">
+              <MappingFragment StoreEntitySet="VKullaniciPuan">
+                <ScalarProperty Name="PUAN" ColumnName="PUAN" />
+                <ScalarProperty Name="MasaId" ColumnName="MasaId" />
+                <ScalarProperty Name="Nick" ColumnName="Nick" />
+                <ScalarProperty Name="KullaniciId" ColumnName="KullaniciId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ayarlar">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.Ayarlar">
+              <MappingFragment StoreEntitySet="Ayarlar">
+                <ScalarProperty Name="Deger" ColumnName="Deger" />
+                <ScalarProperty Name="Aciklama" ColumnName="Aciklama" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VKullaniciPuanTipli">
+            <EntityTypeMapping TypeName="BilgiYarismasiModel.VKullaniciPuanTipli">
+              <MappingFragment StoreEntitySet="VKullaniciPuanTipli">
+                <ScalarProperty Name="PUAN" ColumnName="PUAN" />
+                <ScalarProperty Name="Tip" ColumnName="Tip" />
+                <ScalarProperty Name="Soyad" ColumnName="Soyad" />
+                <ScalarProperty Name="Ad" ColumnName="Ad" />
+                <ScalarProperty Name="KullaniciId" ColumnName="KullaniciId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

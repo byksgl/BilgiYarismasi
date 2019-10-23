@@ -1,0 +1,19 @@
+﻿@model BilgiYarismasi.Web.Models.QuizIndexViewModel
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Yarışma Başlıyor</h2>
+
+<div class="well">
+    Aşağıdan bir konu seçiniz
+</div>
+
+@foreach (var item in Model.konular)
+{
+    <div class="col-lg-2">
+        <a class="btn btn-primary" href="@Url.Action("Basla","Quizz",new { id =item.Id})">@item.Ad</a>
+    </div>
+}
+
+<div class="clearfix"></div>

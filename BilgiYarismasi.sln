@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizMaker.BLL", "BilgiYarismasi.BLL\QuizMaker.BLL.csproj", "{D69D0C2E-6461-4A9C-A8FB-CDDFF49E5BD3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgiYarismasi.DAL", "BilgiYarismasi.DAL\BilgiYarismasi.DAL.csproj", "{5AFC2CAB-A58C-4A5D-886D-A8D9A03225C9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BilgiYarismasi.Web", "BilgiYarismasi.Web\BilgiYarismasi.Web.csproj", "{F6EE25BC-2F22-4B09-855B-F1AC8B7A99B5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D69D0C2E-6461-4A9C-A8FB-CDDFF49E5BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D69D0C2E-6461-4A9C-A8FB-CDDFF49E5BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D69D0C2E-6461-4A9C-A8FB-CDDFF49E5BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D69D0C2E-6461-4A9C-A8FB-CDDFF49E5BD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5AFC2CAB-A58C-4A5D-886D-A8D9A03225C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5AFC2CAB-A58C-4A5D-886D-A8D9A03225C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5AFC2CAB-A58C-4A5D-886D-A8D9A03225C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5AFC2CAB-A58C-4A5D-886D-A8D9A03225C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6EE25BC-2F22-4B09-855B-F1AC8B7A99B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6EE25BC-2F22-4B09-855B-F1AC8B7A99B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6EE25BC-2F22-4B09-855B-F1AC8B7A99B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6EE25BC-2F22-4B09-855B-F1AC8B7A99B5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,33 @@
+﻿@model BilgiYarismasi.Web.Models.SingleBitirViewModel
+@{
+    ViewBag.Title = "SingleBitir";
+}
+
+<div class="well">
+
+    <h1>Tebrikler</h1>
+
+    Yarışma tamamlanmıştır.
+
+</div>
+
+<div>
+    <h2>Sonuçlar</h2>
+    <div>
+        Toplam Soru Sayısı: @Model.toplam
+    </div>
+    <div>
+        Cevaplanan Soru Sayısı: @Model.cevaplanan
+    </div>
+    <div>
+        Doğru Sayısı: @Model.dogruSayisi
+    </div>
+    <div>
+        Yanlış Sayısı: @Model.yanlisSayisi
+    </div>
+    <p><a class="btn btn-success btn-lg" href="@Url.Action("Index","Profil")">Profili görüntüle</a></p>
+    
+</div>
+
+
+

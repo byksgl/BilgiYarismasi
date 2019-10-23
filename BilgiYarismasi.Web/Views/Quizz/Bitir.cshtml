@@ -1,0 +1,30 @@
+﻿@model BilgiYarismasi.Web.IBitis
+@{
+    ViewBag.Title = "Bitir";
+}
+
+<div class="well">
+
+    <h1>Tebrikler</h1>
+
+    Quiz başarıyla tamamlanmıştır.
+
+</div>
+
+<div>
+    <h2>Sonuçlar</h2>
+    <div>
+        Toplam Soru Sayısı: @Model.toplam
+    </div>
+    <div>
+        Cevaplanan Soru Sayısı: @Model.cevaplanan
+    </div>
+    <div>
+        Doğru Sayısı: @Model.dogruSayisi
+    </div>
+    <div>
+        Yanlış Sayısı: @Model.yanlisSayisi
+    </div>
+
+</div>
+
